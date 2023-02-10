@@ -31,5 +31,6 @@ function getSecondsInterval(cantidad_fallos = 10) {
       newSeconds.push(newSecond);
     }
   }
+  console.log('🍌', newSeconds)
   return newSeconds.sort((a, b) => a - b);
 }
