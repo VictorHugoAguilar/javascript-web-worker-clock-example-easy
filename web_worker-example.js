@@ -8,7 +8,7 @@ w.onmessage = function (event) {
 };
 
 (function initialize() {
-  let segundos_repeticiones = getSecondsInterval(15);
+  let segundos_repeticiones = getSecondsInterval();
   setInterval(() => {
     const clock = document.getElementById("clock");
     const seconds = new Date().getSeconds();
@@ -18,7 +18,7 @@ w.onmessage = function (event) {
       clock.removeAttribute("class");
     }
     if (seconds === 0) {
-      segundos_repeticiones = getSecondsInterval(15);
+      segundos_repeticiones = getSecondsInterval();
     }
   }, 1000);
 })();
