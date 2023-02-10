@@ -214,3 +214,7 @@ self.addEventListener('message', function(e) {
 Debido a las restricciones de seguridad de Google Chrome (otros navegadores no aplican esta restricción), los Workers no se ejecutarán de forma local (por ejemplo, desde file://) en las últimas versiones del navegador. En su lugar, fallan de forma automática. Para ejecutar tu aplicación desde el esquema file://, ejecuta Chrome con el conjunto de marcadores --allow-file-access-from-files.
 
 Las secuencias de comandos del Worker deben ser archivos externos con el mismo esquema que su página de llamada. Por ello, no se puede cargar una secuencia de comandos desde una URL data: o una URL javascript:. Asimismo, una página https: no puede iniciar secuencias de comandos de Worker que comiencen con una URL http:.
+
+## Otras referencias
+
+[Otra visión de los web worker](https://github.com/VictorHugoAguilar/javascript-web-worker-clock-example-easy/blob/main/web_worker_explained.md)
