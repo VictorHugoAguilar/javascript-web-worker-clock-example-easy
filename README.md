@@ -1,5 +1,4 @@
 # WEB WORKERS
--
 
 Los navegadores ejecutan las aplicaciones en un único thread, lo que significa que si JavaScript está ejecutando una tarea muy complicada, que se traduce en tiempo de procesado, el rendimiento del navegador se ve afectado. Los Web workers se introdujeron con la idea de simplificar la ejecución de threads en el navegador. Un worker permite crear un entorno en el que un bloque de código JavaScript puede ejecutarse de manera paralela sin afectar al thread principal del navegador. Los Web workers utilizan un protocolo de paso de mensajes similar a los utilizados en programación paralela.
 
