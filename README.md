@@ -12,7 +12,7 @@ Si el archivo especificado existe, el navegador generará un nuevo subproceso de
 
 Antes de comenzar a utilizar los Worker, es necesario conocer el protocolo de paso de mensajes, que también es utilizado en otras APIs como WebSocket y Server-Sent Event.
 
-## 1 TRANSFERENCIA DE MENSAJES
+## 1. TRANSFERENCIA DE MENSAJES
 
 El API de transferencia de mensajes es una manera muy simple de enviar cadenas de caracteres entre un origen (o un dominio) a un destino. Por ejemplo podemos utilizarlo para enviar información a una ventana abierta como popup, o a un iframe dentro de la página, aún cuando tiene como origen otro dominio.
 
@@ -86,7 +86,7 @@ this.addEventListener('message', function(e) {
 }, false);
 ````
 
-## 2 UTILIZACIÓN DE WEB WORKERS
+## 2. UTILIZACIÓN DE WEB WORKERS
 
 Un Worker es una manera ejecutar código JavaScript de manera paralela al proceso principal, sin interferir con el navegador. El navegador sigue siendo responsable de solicitar y analizar ficheros, renderizar la vista, ejecutar JavaScript y cualquier otro proceso que consuma tiempo de procesado y que haga que el resto de tareas tengan que esperar. Y es aquí donde los Web workers toman importancia.
 
@@ -120,7 +120,7 @@ worker.addEventListener('message', function(e) {
 }, false);
 ````
 
-### 2.1 DENTRO DE UN WORKER
+### 2.1. DENTRO DE UN WORKER
 Evidentemente, dentro de un Worker necesitamos comunicarnos con el thread principal, tanto para recibir los datos de los mensajes como para nuevos datos de vuelta. Para ello, añadimos un escuchador para el evento message, y enviamos los datos de vuelta utilizando el mismo método postMessage.
 
 ````js
@@ -148,12 +148,13 @@ En cambio, los Workers NO pueden acceder a las siguientes funciones:
 * Objeto document.
 * Objeto parent.
 
-## 3 SUBWORKERS
+## 3. SUBWORKERS
 
 Los Workers tienen la capacidad de generar Workers secundarios. Esto significa, que podemos dividir la tarea principal en subtareas, y crear nuevos Workers dentro del Worker principal. Sin embargo, a la hora de utilizar los Subworkers, y antes de poder devolver el resultado final al hilo principal, es necesario asegurarse que todos los procesos han terminado.
 
 ````js
 var pendingWorkers = 0, results = {},;
+
 onmessage = function (event) {
     var data = JSON.parse(event.data), worker = null;
     pendingWorkers = data.length;
@@ -163,6 +164,7 @@ onmessage = function (event) {
         worker.onmessage = storeResult;
     }
 }
+
 function storeResult(event) {
     var result = JSON.parse(event.data);
     pendingWorkers--;
@@ -172,7 +174,7 @@ function storeResult(event) {
 }
 ````
 
-## 4 GESTIONAR ERRORES
+## 4. GESTIONAR ERRORES
 Si se produce un error mientras se ejecuta un Worker, se activa un evento error. La interfaz incluye tres propiedades útiles para descubrir la causa del error: filename (el nombre de la secuencia de comandos del Worker que causó el error), lineno (el número de línea donde se produjo el error) y message (una descripción significativa del error).
 
 Ejemplo: workerWithError.js intenta ejecutar 1/x, donde el valor de x no se ha definido:
@@ -182,6 +184,7 @@ Ejemplo: workerWithError.js intenta ejecutar 1/x, donde el valor de x no se ha d
 <output id="result"></output>
 
 <script>
+    
 function onError(e) {
     document.getElementById('error').textContent = [
         'ERROR: Line ', e.lineno, ' in ', e.filename, ': ', e.message].join('');
@@ -189,10 +192,12 @@ function onError(e) {
 function onMsg(e) {
     document.getElementById('result').textContent = e.data;
 }
+    
 var worker = new Worker('workerWithError.js');
 worker.addEventListener('message', onMsg, false);
 worker.addEventListener('error', onError, false);
 worker.postMessage(); // Start worker without a message.
+    
 </script>
 ````
 
@@ -204,8 +209,8 @@ self.addEventListener('message', function(e) {
 };
 ````
 
-## 5 SEGURIDAD
+## 5. SEGURIDAD
 
 Debido a las restricciones de seguridad de Google Chrome (otros navegadores no aplican esta restricción), los Workers no se ejecutarán de forma local (por ejemplo, desde file://) en las últimas versiones del navegador. En su lugar, fallan de forma automática. Para ejecutar tu aplicación desde el esquema file://, ejecuta Chrome con el conjunto de marcadores --allow-file-access-from-files.
 
-Las secuencias de comandos del Worker deben ser archivos externos con el mismo esquema que su página de llamada. Por ello, no se puede cargar una secuencia de comandos desde una URL data: o una URL javascript:. Asimismo, una página https: no puede iniciar secuencias de comandos de Worker que comiencen con una URL http:
+Las secuencias de comandos del Worker deben ser archivos externos con el mismo esquema que su página de llamada. Por ello, no se puede cargar una secuencia de comandos desde una URL data: o una URL javascript:. Asimismo, una página https: no puede iniciar secuencias de comandos de Worker que comiencen con una URL http:.
