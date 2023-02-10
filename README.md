@@ -215,6 +215,6 @@ Debido a las restricciones de seguridad de Google Chrome (otros navegadores no a
 
 Las secuencias de comandos del Worker deben ser archivos externos con el mismo esquema que su página de llamada. Por ello, no se puede cargar una secuencia de comandos desde una URL data: o una URL javascript:. Asimismo, una página https: no puede iniciar secuencias de comandos de Worker que comiencen con una URL http:.
 
-## Otras referencias
+## 6. Otras referencias
 
 [Otra visión de los web worker](https://github.com/VictorHugoAguilar/javascript-web-worker-clock-example-easy/blob/main/web_worker_explained.md)
