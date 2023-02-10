@@ -1,0 +1,109 @@
+/* .reloj {
+  color: #0d1420;
+  font-size: 120px;
+  font-family: Arial;
+  letter-spacing: 5px;
+  text-align: center;
+  background-color: #f7d06a;
+  border: 10px solid #091321;
+  border-radius: 20px;
+} */
+
+body {
+  background-color: #1f1f1f;
+}
+
+.clockdate-wrapper {
+  background-color: #222;
+  padding: 25px;
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 2px #ffa500, 0 0 5px #ffa500, 0 0 10px #ffa500;
+  margin: 0 auto;
+  margin-top: 15%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 8px,
+    rgba(0, 0, 0, 0.8) 9px,
+    rgba(0, 0, 0, 0.8) 13px,
+    transparent 13px
+  );
+}
+.animation {
+  animation: blink 1s infinite;
+  -webkit-animation: blink 1s infinite;
+}
+
+#clock {
+  font-family: sans-serif;
+  font-size: 60px;
+  /* text-shadow: 0px 0px 1px #fff; */
+  color: #fff6a9;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500,
+    0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+}
+#clock span {
+  color: #888;
+  text-shadow: 0px 0px 1px #333;
+  font-size: 30px;
+  position: relative;
+  top: -27px;
+  left: -10px;
+}
+#date {
+  letter-spacing: 10px;
+  font-size: 14px;
+  font-family: arial, sans-serif;
+  color: #fff6a9;
+}
+@-webkit-keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    /*     color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
+    text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500,
+      0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
+
+@keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    /*     color: #fccaff;
+    text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+      0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
+    text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500,
+      0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
