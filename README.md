@@ -16,7 +16,7 @@ Antes de comenzar a utilizar los Worker, es necesario conocer el protocolo de pa
 
 El API de transferencia de mensajes es una manera muy simple de enviar cadenas de caracteres entre un origen (o un dominio) a un destino. Por ejemplo podemos utilizarlo para enviar información a una ventana abierta como popup, o a un iframe dentro de la página, aún cuando tiene como origen otro dominio.
 
-La comunicación entre un Worker y su página principal se realiza mediante un modelo de evento y el método postMessage(). En función del navegador o de la versión, postMessage() puede aceptar una cadena o un objeto JSON como argumento único. Las últimas versiones de los navegadores modernos son compatibles con la transferencia de objetos JSON. De todas maneras, siempre podemos utilizar los métodos JSON.stringify y JSON.parse para la transferencia de objetos entre el thread principal y los Worker.
+La comunicación entre un Worker y su página principal se realiza mediante un modelo de evento y el método `postMessage()`. En función del navegador o de la versión, `postMessage()` puede aceptar una cadena o un objeto JSON como argumento único. Las últimas versiones de los navegadores modernos son compatibles con la transferencia de objetos JSON. De todas maneras, siempre podemos utilizar los métodos `JSON.stringify` y `JSON.parse` para la transferencia de objetos entre el thread principal y los Worker.
 
 A continuación, se muestra un ejemplo sobre cómo utilizar una cadena para transferir "Hello World" a un Worker en doWork.js. El Worker simplemente devuelve el mensaje que se le transfiere.
 
@@ -36,7 +36,7 @@ self.addEventListener('message', function(e) {
 }, false);
 ````
 
-Cuando se ejecuta postMessage() desde la página principal, el Worker es capaz de obtener este mensaje escuchando al evento message. Se puede acceder a los datos del mensaje (en este caso "Hello World") a través de la propiedad data del evento. Aunque este ejemplo concreto no es demasiado complejo, demuestra que postMessage() también sirve para transferir datos de vuelta al thread principal, una vez que los datos de origen se hayan procesado correctamente.
+Cuando se ejecuta `postMessage() desde la página principal, el Worker es capaz de obtener este mensaje escuchando al evento message. Se puede acceder a los datos del mensaje (en este caso "Hello World") a través de la propiedad data del evento. Aunque este ejemplo concreto no es demasiado complejo, demuestra que `postMessage()` también sirve para transferir datos de vuelta al thread principal, una vez que los datos de origen se hayan procesado correctamente.
 
 Los mensajes que se transfieren entre el origen y los Worker se copian, no se pasan por referencia. Por ejemplo, en el siguiente ejemplo, a la propiedad msg del mensaje JSON se accede en las dos ubicaciones. Parece que el objeto se transfiere directamente al Worker aunque se esté ejecutando en un espacio específico e independiente. En realidad, lo que ocurre es que el objeto se serializa al transferirlo al Worker y, posteriormente, se anula la serialización en la otra fase del proceso. El origen y el Worker no comparten la misma instancia, por lo que el resultado final es la creación de un duplicado en cada transferencia. La mayoría de los navegadores implementan esta función mediante la codificación/descodificación JSON automática del valor en la otra fase del proceso, cuando el paso de objetos está soportado.
 
@@ -134,7 +134,7 @@ Es conveniente saber, que a diferencia de la ejecución un script en el document
 * Enviar datos con postMessage y aceptar mensajes entrantes a través del evento onmessage.
 * close, para terminar con el Worker actual.
 * Realizar peticiones Ajax.
-* Utilizar las funciones de tiempo setTimeout()/clearTimeout() y setInterval()/clearInterval().
+* Utilizar las funciones de tiempo `setTimeout()/clearTimeout()` y `setInterval()/clearInterval()`.
 * Las siguientes funciones de JavaScript: eval, isNaN, escape, etc.
 * WebSockets.
 * EventSource.
